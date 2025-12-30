@@ -14,6 +14,11 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+if [[ ! -f "${SCRIPT_DIR}/awocc" ]]; then
+  echo "Missing awocc binary in ${SCRIPT_DIR}."
+  exit 1
+fi
+
 if ! id -u "${APP_USER}" >/dev/null 2>&1; then
   useradd \
     --system \
@@ -26,23 +31,32 @@ fi
 mkdir -p "${APP_DIR}"
 if command -v rsync >/dev/null 2>&1; then
   rsync -a --delete \
-    --exclude ".git" \
-    --exclude "cert-cache" \
+    --include "/awocc" \
+    --include "/data/***" \
+    --include "/public/***" \
+    --include "/templates/***" \
+    --include "/data" \
+    --include "/public" \
+    --include "/templates" \
+    --exclude "/*" \
     "${SCRIPT_DIR}/" "${APP_DIR}/"
 else
   rm -rf "${APP_DIR:?}/"*
-  cp -a "${SCRIPT_DIR}/." "${APP_DIR}/"
+  cp -a "${SCRIPT_DIR}/awocc" "${APP_DIR}/"
+  if [[ -d "${SCRIPT_DIR}/data" ]]; then
+    cp -a "${SCRIPT_DIR}/data" "${APP_DIR}/"
+  fi
+  if [[ -d "${SCRIPT_DIR}/public" ]]; then
+    cp -a "${SCRIPT_DIR}/public" "${APP_DIR}/"
+  fi
+  if [[ -d "${SCRIPT_DIR}/templates" ]]; then
+    cp -a "${SCRIPT_DIR}/templates" "${APP_DIR}/"
+  fi
 fi
 
 chown -R "${APP_USER}:${APP_USER}" "${APP_DIR}"
 
-if command -v go >/dev/null 2>&1; then
-  (cd "${APP_DIR}" && go build -o "${BIN_PATH}" .)
-else
-  echo "Go is required to build the binary."
-  exit 1
-fi
-
+install -m 0755 "${APP_DIR}/awocc" "${BIN_PATH}"
 chown "${APP_USER}:${APP_USER}" "${BIN_PATH}"
 
 if command -v setcap >/dev/null 2>&1; then
@@ -84,5 +98,7 @@ EOF
 
 systemctl daemon-reload
 systemctl enable --now "${APP_NAME}.service"
+
+find "${SCRIPT_DIR}" -mindepth 1 -maxdepth 1 ! -name "install_awocc.sh" -exec rm -rf {} +
 
 echo "Installed and started ${APP_NAME}."

@@ -56,6 +56,11 @@ const (
 	defaultLinkedInURL      = "https://www.linkedin.com/in/jovie-velasco-748523150/"
 	defaultFacebookURL      = "https://www.facebook.com"
 	defaultInstagramURL     = "https://www.instagram.com"
+	defaultHTTPAddr         = "localhost:8080"
+	defaultHTTPSAddr        = ":443"
+	defaultACMEHost         = "awocc.ca"
+	defaultACMECache        = "cert-cache"
+	defaultACMEEmail        = "marc.gauthier3@gmail.com"
 )
 
 func newSessionStore() *sessionStore {
@@ -340,6 +345,14 @@ func toTelURL(raw string) string {
 }
 
 func main() {
+	localMode := false
+	for _, arg := range os.Args[1:] {
+		if arg == "/local" {
+			localMode = true
+			break
+		}
+	}
+
 	db, err := sql.Open("sqlite", filepath.Join("data", "awocc.db"))
 	if err != nil {
 		log.Fatal(err)
@@ -357,7 +370,7 @@ func main() {
 		db:        db,
 		sessions:  newSessionStore(),
 		limiter:   newRateLimiter(),
-		reloadTpl: os.Getenv("TEMPLATE_RELOAD") == "1" || os.Getenv("HTTP_ONLY") == "1",
+		reloadTpl: localMode,
 	}
 
 	templateCache, err := loadTemplates()
@@ -402,25 +415,29 @@ func main() {
 		http.ServeFile(w, r, filepath.Join(assetsDir, "favicon.ico"))
 	})
 
-	addr := envOrDefault("HTTP_ADDR", ":8080")
-	if os.Getenv("HTTP_ONLY") == "1" {
+	addr := defaultHTTPAddr
+	httpOnly := localMode
+	if localMode {
+		addr = defaultHTTPAddr
+	}
+	if httpOnly {
 		log.Printf("starting HTTP server on %s", addr)
 		log.Fatal(http.ListenAndServe(addr, mux))
 	}
 
-	hosts := strings.Split(envOrDefault("ACME_HOSTS", ""), ",")
+	hosts := strings.Split(defaultACMEHost, ",")
 	for i := range hosts {
 		hosts[i] = strings.TrimSpace(hosts[i])
 	}
 	if len(hosts) == 0 || hosts[0] == "" {
-		log.Fatal("ACME_HOSTS is required when HTTP_ONLY is not set")
+		log.Fatal("ACME host is required for HTTPS")
 	}
 
-	certCache := envOrDefault("ACME_CACHE", "cert-cache")
+	certCache := defaultACMECache
 	manager := &autocert.Manager{
 		Cache:      autocert.DirCache(certCache),
 		Prompt:     autocert.AcceptTOS,
-		Email:      envOrDefault("ACME_EMAIL", ""),
+		Email:      defaultACMEEmail,
 		HostPolicy: autocert.HostWhitelist(hosts...),
 	}
 
@@ -439,7 +456,7 @@ func main() {
 		}
 	}()
 
-	httpsAddr := envOrDefault("HTTPS_ADDR", ":443")
+	httpsAddr := defaultHTTPSAddr
 	server := &http.Server{
 		Addr:      httpsAddr,
 		Handler:   mux,
@@ -447,14 +464,6 @@ func main() {
 	}
 	log.Printf("starting HTTPS server on %s", httpsAddr)
 	log.Fatal(server.ListenAndServeTLS("", ""))
-}
-
-func envOrDefault(key, fallback string) string {
-	value := os.Getenv(key)
-	if value == "" {
-		return fallback
-	}
-	return value
 }
 
 func migrate(db *sql.DB) error {
