@@ -58,7 +58,7 @@ const (
 	defaultInstagramURL     = "https://www.instagram.com"
 	defaultHTTPAddr         = "localhost:8080"
 	defaultHTTPSAddr        = ":443"
-	defaultACMEHost         = "awocc.ca"
+	defaultACMEHost 		= "awocc.ca,www.awocc.ca"
 	defaultACMECache        = "cert-cache"
 	defaultACMEEmail        = "marc.gauthier3@gmail.com"
 )
