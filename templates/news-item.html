@@ -1,0 +1,16 @@
+{{define "content"}}
+<section class="hero">
+  <div class="container">
+    <h1>{{(index .NewsItems 0).Title}}</h1>
+    <p class="tag">{{(index .NewsItems 0).PublishedAt}}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="card">
+      <p>{{(index .NewsItems 0).Body}}</p>
+    </div>
+  </div>
+</section>
+{{end}}

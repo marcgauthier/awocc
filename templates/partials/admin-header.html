@@ -1,0 +1,15 @@
+{{define "admin-header"}}
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="logo" href="/">
+      <img class="logo-image logo-image--admin" src="/assets/img/awocc.png" alt="AWOCC" />
+      <span class="logo-sub">Admin Portal</span>
+    </a>
+    {{if .ShowAdminLogout}}
+    <div class="nav-actions">
+      <button class="btn btn-outline" data-admin-logout>Sign out</button>
+    </div>
+    {{end}}
+  </div>
+</header>
+{{end}}

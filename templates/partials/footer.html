@@ -1,0 +1,23 @@
+{{define "footer"}}
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>AWOCC.ca</h3>
+      <p><span class="lang en">Advanced Wound Ostomy Care Consulting.</span><span class="lang fr">Soins avances en plaies et stomies.</span></p>
+    </div>
+    <div>
+      <h4><span class="lang en">Stay connected</span><span class="lang fr">Rester connecte</span></h4>
+      <p><a href="{{.LinkedInURL}}" target="_blank" rel="noreferrer">LinkedIn</a></p>
+      <p><a href="{{.FacebookURL}}" target="_blank" rel="noreferrer">Facebook</a></p>
+      <p><a href="{{.InstagramURL}}" target="_blank" rel="noreferrer">Instagram</a></p>
+    </div>
+    <div>
+      <h4><span class="lang en">Contact</span><span class="lang fr">Contact</span></h4>
+      <p>Ontario, Canada</p>
+      <p><a href="mailto:{{.ContactEmail}}">{{.ContactEmail}}</a></p>
+      <p><a href="{{telURL .ContactPhone}}">{{.ContactPhone}}</a></p>
+    </div>
+  </div>
+  <div class="container footer-meta">&copy; <span data-year></span> AWOCC.ca</div>
+</footer>
+{{end}}

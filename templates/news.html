@@ -1,0 +1,33 @@
+{{define "content"}}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1><span class="lang en">News, events, and professional updates</span><span class="lang fr">Nouvelles, evenements et mises a jour</span></h1>
+      <p><span class="lang en">Stay informed with workshops, community events, and evidence updates in wound, ostomy, and continence care.</span><span class="lang fr">Restez informe des ateliers, evenements et mises a jour cliniques.</span></p>
+    </div>
+    <div class="hero-card">
+      <h3><span class="lang en">Upcoming sessions</span><span class="lang fr">Sessions a venir</span></h3>
+      <p><span class="lang en">Join virtual learning and in-person consultations across Ontario.</span><span class="lang fr">Participez a des formations virtuelles et rencontres en personne.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-3">
+      {{if .NewsItems}}
+        {{range .NewsItems}}
+        <article class="card">
+          <span class="tag">{{.PublishedAt}}</span>
+          <h3>{{.Title}}</h3>
+          <p>{{.Description}}</p>
+          <a class="btn btn-outline" href="/news/{{.ID}}">Read</a>
+        </article>
+        {{end}}
+      {{else}}
+        <p class="notice"><span class="lang en">No news or events yet.</span><span class="lang fr">Aucune nouvelle pour l'instant.</span></p>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}

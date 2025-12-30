@@ -1,0 +1,13 @@
+{{define "admin-content"}}
+<div class="container">
+  <div class="card" style="max-width: 480px; margin: 0 auto;">
+    <h1>Admin Login</h1>
+    <form class="form" data-admin-login>
+      <input class="input" type="text" name="username" placeholder="Username" required />
+      <input class="input" type="password" name="password" placeholder="Password" required />
+      <button class="btn" type="submit">Sign in</button>
+      <p class="notice" data-login-status style="display: none;"></p>
+    </form>
+  </div>
+</div>
+{{end}}

@@ -1,0 +1,132 @@
+{{define "content"}}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-badge">
+        <span class="lang en">Ontario-focused nursing consultant</span>
+        <span class="lang fr">Consultante en soins infirmiers en Ontario</span>
+      </span>
+      <h1 class="hero-title">
+        <span class="lang en">Advanced wound, ostomy, and continence guidance that feels personal.</span>
+        <span class="lang fr">Des soins avances en plaies, stomies et continence, avec une approche humaine.</span>
+      </h1>
+      <p>
+        <span class="lang en">AWOCC supports patients, caregivers, and clinical teams with evidence-informed education, care plans, and follow-up rooted in Ontario standards.</span>
+        <span class="lang fr">AWOCC accompagne les patients, proches aidants et equipes cliniques avec de l'education et des plans de soins bases sur les normes ontariennes.</span>
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="/contact"><span class="lang en">Book a consult</span><span class="lang fr">Prendre rendez-vous</span></a>
+        <a class="btn btn-outline" href="/services"><span class="lang en">Explore services</span><span class="lang fr">Voir les services</span></a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>
+        <span class="lang en">Specialist-led care</span>
+        <span class="lang fr">Soins diriges par une specialiste</span>
+      </h3>
+      <p>
+        <span class="lang en">Jovie Velasco, RN, MClSc, NSWOC, WOCC(C) brings advanced clinical expertise in wound, ostomy, and continence care.</span>
+        <span class="lang fr">Jovie Velasco, RN, MClSc, NSWOC, WOCC(C) offre une expertise clinique avancee en soins des plaies, stomies et continence.</span>
+      </p>
+      <ul class="list">
+        <li><span>01</span><div><span class="lang en">In-home consultations</span><span class="lang fr">Consultations a domicile</span></div></li>
+        <li><span>02</span><div><span class="lang en">Caregiver education</span><span class="lang fr">Formation des proches aidants</span></div></li>
+        <li><span>03</span><div><span class="lang en">Hospital and community collaboration</span><span class="lang fr">Collaboration hopital-communaute</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section home-resources">
+  <div class="container">
+    <div class="section-title">
+      <h2><span class="lang en">Care pathways that move with you</span><span class="lang fr">Des parcours de soins adaptes a votre realite</span></h2>
+      <p><span class="lang en">We combine clinical rigor with compassionate coaching to support healing, comfort, and foster greater independence in daily routines.</span><span class="lang fr">Nous associons rigueur clinique et accompagnement bienveillant pour soutenir la cicatrisation, le confort et l'autonomie au quotidien.</span></p>
+    </div>
+    <div class="grid grid-3">
+      <article class="card">
+        <span class="tag">Wound Care</span>
+        <h3><span class="lang en">Assessment and treatment planning</span><span class="lang fr">Evaluation et plan de traitement</span></h3>
+      <p><span class="lang en">Comprehensive wound assessments, dressing selection, and individualized care plan creation.</span><span class="lang fr">Evaluations completes, choix des pansements et creation d'un plan de soins individualise.</span></p>
+      </article>
+          <article class="card">
+            <span class="tag">Ostomy Care</span>
+            <h3><span class="lang en">Personalized ostomy support</span><span class="lang fr">Soutien personnalise en stomie</span></h3>
+            <p><span class="lang en">In-depth ostomy assessments, appliance selection, and a personalized treatment plan that fits each person's needs.</span><span class="lang fr">Evaluations approfondies des stomies, choix d'appareillage et plan de traitement personnalise adapte a chaque personne.</span></p>
+          </article>
+          <article class="card">
+            <span class="tag">Training</span>
+            <h3><span class="lang en">Professional training</span><span class="lang fr">Formation professionnelle</span></h3>
+            <p><span class="lang en">Training for nurses, PSWs, and healthcare staff in community settings, retirement homes, and long-term care facilities.</span><span class="lang fr">Formation pour infirmieres, PSW et personnel de sante en communaute, residences pour aines et etablissements de soins de longue duree.</span></p>
+          </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="highlight">
+      <h2><span class="lang en">Trusted guidance for Ontario teams</span><span class="lang fr">Un accompagnement fiable pour l'Ontario</span></h2>
+      <p><span class="lang en">We align recommendations with NSWOC standards, provincial resources, and the realities of community care.</span><span class="lang fr">Nos recommandations suivent les normes NSWOC et les ressources provinciales.</span></p>
+    </div>
+    <div>
+      <h3><span class="lang en">What you can expect</span><span class="lang fr">Ce que vous pouvez attendre</span></h3>
+      <ul class="list">
+        <li><span>01</span><div><span class="lang en">Clear care plans and documentation</span><span class="lang fr">Plans de soins clairs et documentes</span></div></li>
+        <li><span>02</span><div><span class="lang en">Ongoing check-ins and follow-up consultations</span><span class="lang fr">Suivi regulier et consultations de suivi</span></div></li>
+        <li><span>03</span><div><span class="lang en">Education sessions for families and staff</span><span class="lang fr">Seances educatives pour familles et equipes</span></div></li>
+        <li><span>04</span><div><span class="lang en">Virtual consultation options across Ontario</span><span class="lang fr">Options de consultation virtuelle en Ontario</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2><span class="lang en">Latest resources</span><span class="lang fr">Ressources recentes</span></h2>
+      <p><span class="lang en">Fresh insights from our blog and vlog.</span><span class="lang fr">Les dernieres ressources du blog et du vlog.</span></p>
+    </div>
+    <div class="grid grid-2">
+      <div>
+        <h3><span class="lang en">Blog highlights</span><span class="lang fr">Blogue en vedette</span></h3>
+        <div class="grid resource-grid">
+          {{if .BlogPosts}}
+            {{range .BlogPosts}}
+            <article class="card">
+              <span class="tag">{{.PublishedAt}}</span>
+              <h3>{{.Title}}</h3>
+              <p>{{truncateWords .Body $.BlogExcerptWords}}</p>
+              <a class="btn btn-outline" href="/blog/{{.ID}}">Read</a>
+            </article>
+            {{end}}
+          {{else}}
+            <p class="notice"><span class="lang en">No blog posts yet.</span><span class="lang fr">Aucun article pour l'instant.</span></p>
+          {{end}}
+        </div>
+      </div>
+      <div>
+        <h3><span class="lang en">Vlog highlights</span><span class="lang fr">Vlog en vedette</span></h3>
+        <div class="grid resource-grid">
+          {{if .Vlogs}}
+            {{range .Vlogs}}
+            <article class="card">
+              {{$thumb := thumbnailURL .ImageURL .YoutubeURL}}
+              {{if $thumb}}
+              <img class="card-media" src="{{$thumb}}" alt="{{.Title}}" />
+              {{end}}
+              <span class="tag">{{.PublishedAt}}</span>
+              <h3>{{.Title}}</h3>
+              <p>{{.Description}}</p>
+              <a class="btn btn-outline" href="{{.YoutubeURL}}" target="_blank" rel="noreferrer">Watch</a>
+            </article>
+            {{end}}
+          {{else}}
+            <p class="notice"><span class="lang en">No vlogs yet.</span><span class="lang fr">Aucune video pour l'instant.</span></p>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}

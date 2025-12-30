@@ -1,0 +1,58 @@
+{{define "content"}}
+<section class="hero contact-hero">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <span class="hero-badge"><span class="lang en">Care guidance, fast response</span><span class="lang fr">Conseils et reponse rapide</span></span>
+      <h1><span class="lang en">Let's connect</span><span class="lang fr">Restons en contact</span></h1>
+      <p><span class="lang en">Call or email us for consultations, staff training, or wound care support. We respond within one business day.</span><span class="lang fr">Appelez ou ecrivez-nous pour les consultations, la formation et le soutien clinique. Reponse en un jour ouvrable.</span></p>
+      <div class="contact-actions">
+        <a class="btn" href="{{telURL .ContactPhone}}"><span class="lang en">Call {{.ContactPhone}}</span><span class="lang fr">Appeler {{.ContactPhone}}</span></a>
+        <a class="btn btn-outline" href="mailto:{{.ContactEmail}}"><span class="lang en">Email {{.ContactEmail}}</span><span class="lang fr">Ecrire {{.ContactEmail}}</span></a>
+      </div>
+    </div>
+    <div class="contact-cards">
+      <div class="card contact-card">
+        <h3><span class="lang en">Phone</span><span class="lang fr">Telephone</span></h3>
+        <p><a href="{{telURL .ContactPhone}}">{{.ContactPhone}}</a></p>
+        <p><span class="lang en">Fast scheduling for clinics, families, and community teams.</span><span class="lang fr">Planification rapide pour cliniques, familles et equipes.</span></p>
+      </div>
+      <div class="card contact-card">
+        <h3><span class="lang en">Email</span><span class="lang fr">Courriel</span></h3>
+        <p><a href="mailto:{{.ContactEmail}}">{{.ContactEmail}}</a></p>
+        <p><span class="lang en">Share key details and we will follow up.</span><span class="lang fr">Partagez les details essentiels, nous vous repondrons.</span></p>
+      </div>
+      <div class="card contact-card contact-card--accent">
+        <h3><span class="lang en">Service area</span><span class="lang fr">Zone desservie</span></h3>
+        <ul class="contact-area-list">
+          <li><span class="contact-dot"></span><span class="lang en">Ottawa Champlain Area</span><span class="lang fr">Region d'Ottawa Champlain</span></li>
+          <li><span class="contact-dot"></span><span class="lang en">Southeast Ontario</span><span class="lang fr">Sud-est de l'Ontario</span></li>
+          <li><span class="contact-dot"></span><span class="lang en">Virtual across Ontario</span><span class="lang fr">Virtuel partout en Ontario</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-areas">
+  <div class="container">
+    <div class="section-title">
+      <h2><span class="lang en">Where we work</span><span class="lang fr">Ou nous travaillons</span></h2>
+      <p><span class="lang en">In-home consults, facility partnerships, and virtual care across the province.</span><span class="lang fr">Consultations a domicile, partenariats et services virtuels.</span></p>
+    </div>
+    <div class="grid grid-3">
+      <article class="card">
+        <h3><span class="lang en">Ottawa Champlain</span><span class="lang fr">Ottawa Champlain</span></h3>
+        <p><span class="lang en">Home care and clinic support for Ottawa and surrounding communities.</span><span class="lang fr">Soins a domicile et soutien clinique pour Ottawa et environs.</span></p>
+      </article>
+      <article class="card">
+        <h3><span class="lang en">Southeast Ontario</span><span class="lang fr">Sud-est de l'Ontario</span></h3>
+        <p><span class="lang en">Partnerships with retirement homes, LTC, and community teams.</span><span class="lang fr">Partenariats avec residences, SLD et equipes communautaires.</span></p>
+      </article>
+      <article class="card">
+        <h3><span class="lang en">Virtual Consultations</span><span class="lang fr">Consultations virtuelles</span></h3>
+        <p><span class="lang en">Education, follow-ups, and care planning for teams across Ontario.</span><span class="lang fr">Education, suivis et plans de soins partout en Ontario.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+{{end}}

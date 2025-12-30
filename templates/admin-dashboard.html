@@ -1,0 +1,80 @@
+{{define "admin-content"}}
+<div class="container admin-container" data-admin-shell>
+  <div class="admin-grid admin-grid--edit" style="margin-bottom: 32px;">
+    <div class="admin-panel">
+      <h2>Contact Info</h2>
+      <p class="notice">Used site-wide for phone and email links.</p>
+    </div>
+    <div class="admin-panel">
+      <h2>Edit Contact Info</h2>
+      <form class="form" data-settings-form>
+        <input class="input" type="email" name="email" placeholder="Email" required />
+        <input class="input" type="text" name="phone" placeholder="Phone" required />
+        <input class="input" type="number" name="blog_excerpt_words" placeholder="Blog excerpt words" min="1" max="200" required />
+        <input class="input" type="url" name="linkedin_url" placeholder="LinkedIn URL" required />
+        <input class="input" type="url" name="facebook_url" placeholder="Facebook URL" required />
+        <input class="input" type="url" name="instagram_url" placeholder="Instagram URL" required />
+        <button class="btn" type="submit">Save settings</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-grid admin-grid--edit">
+    <div class="admin-panel">
+      <h2>Blog Posts</h2>
+      <div class="admin-list" data-blog-list></div>
+    </div>
+    <div class="admin-panel">
+      <h2>Create or Edit Blog</h2>
+      <form class="form" data-blog-form>
+        <input type="hidden" name="id" />
+        <input class="input" type="text" name="title" placeholder="Title" required />
+        <textarea class="textarea" name="body" placeholder="Body"></textarea>
+        <input class="input" type="text" name="published_at" placeholder="Published date (YYYY-MM-DD)" />
+        <label><input type="checkbox" name="published" /> Published</label>
+        <button class="btn" type="submit">Save blog post</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-grid admin-grid--edit" style="margin-top: 32px;">
+    <div class="admin-panel">
+      <h2>Vlog Entries</h2>
+      <div class="admin-list" data-vlog-list></div>
+    </div>
+    <div class="admin-panel">
+      <h2>Create or Edit Vlog</h2>
+      <form class="form" data-vlog-form>
+        <input type="hidden" name="id" />
+        <input class="input" type="text" name="title" placeholder="Title" required />
+        <input class="input" type="text" name="description" placeholder="Description" />
+        <input class="input" type="text" name="youtube_url" placeholder="YouTube URL" required />
+        <input class="input" type="text" name="image_url" placeholder="Thumbnail image URL" />
+        <input class="input" type="text" name="published_at" placeholder="Published date (YYYY-MM-DD)" />
+        <label><input type="checkbox" name="published" /> Published</label>
+        <button class="btn" type="submit">Save vlog entry</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-grid admin-grid--edit" style="margin-top: 32px;">
+    <div class="admin-panel">
+      <h2>News &amp; Events</h2>
+      <div class="admin-list" data-news-list></div>
+    </div>
+    <div class="admin-panel">
+      <h2>Create or Edit News</h2>
+      <form class="form" data-news-form>
+        <input type="hidden" name="id" />
+        <input class="input" type="text" name="title" placeholder="Title" required />
+        <input class="input" type="text" name="slug" placeholder="Slug" required />
+        <input class="input" type="text" name="description" placeholder="Description" />
+        <textarea class="textarea" name="body" placeholder="Details"></textarea>
+        <input class="input" type="text" name="published_at" placeholder="Published date (YYYY-MM-DD)" />
+        <label><input type="checkbox" name="published" /> Published</label>
+        <button class="btn" type="submit">Save news item</button>
+      </form>
+    </div>
+  </div>
+</div>
+{{end}}

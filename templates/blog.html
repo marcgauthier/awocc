@@ -1,0 +1,33 @@
+{{define "content"}}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1><span class="lang en">Blog</span><span class="lang fr">Blogue</span></h1>
+      <p><span class="lang en">Clinical insights, education, and Ontario-focused updates.</span><span class="lang fr">Analyses cliniques, education et mises a jour en Ontario.</span></p>
+    </div>
+    <div class="hero-card">
+      <h3><span class="lang en">Practical guidance</span><span class="lang fr">Conseils pratiques</span></h3>
+      <p><span class="lang en">Clear, actionable guidance for patients and care teams.</span><span class="lang fr">Des conseils clairs et actionnables.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-3">
+      {{if .BlogPosts}}
+        {{range .BlogPosts}}
+        <article class="card">
+          <span class="tag">{{.PublishedAt}}</span>
+          <h3>{{.Title}}</h3>
+          <p>{{truncateWords .Body $.BlogExcerptWords}}</p>
+          <a class="btn btn-outline" href="/blog/{{.ID}}">Read</a>
+        </article>
+        {{end}}
+      {{else}}
+        <p class="notice"><span class="lang en">No blog posts yet.</span><span class="lang fr">Aucun article pour l'instant.</span></p>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}

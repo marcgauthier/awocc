@@ -1,0 +1,39 @@
+{{define "content"}}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1><span class="lang en">Vlog</span><span class="lang fr">Vlog</span></h1>
+      <p><span class="lang en">Short videos that translate clinical best practices into everyday routines.</span><span class="lang fr">De courtes videos pour transformer les meilleures pratiques en gestes quotidiens.</span></p>
+    </div>
+    <div class="hero-card">
+      <h3><span class="lang en">Watch and learn</span><span class="lang fr">Regarder et apprendre</span></h3>
+      <p><span class="lang en">Short videos that keep care teams aligned and confident.</span><span class="lang fr">Des videos concises pour des equipes alignees et confiantes.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-3 vlog-grid">
+      {{if .Vlogs}}
+        {{range .Vlogs}}
+        <article class="card">
+          {{$thumb := thumbnailURL .ImageURL .YoutubeURL}}
+          {{if $thumb}}
+          <a href="{{.YoutubeURL}}" target="_blank" rel="noreferrer">
+            <img class="card-media" src="{{$thumb}}" alt="{{.Title}}" />
+          </a>
+          {{end}}
+          <span class="tag">{{.PublishedAt}}</span>
+          <h3>{{.Title}}</h3>
+          <p>{{.Description}}</p>
+          <a class="btn btn-outline" href="{{.YoutubeURL}}" target="_blank" rel="noreferrer">Watch on YouTube</a>
+        </article>
+        {{end}}
+      {{else}}
+        <p class="notice"><span class="lang en">No vlogs yet.</span><span class="lang fr">Aucune video pour l'instant.</span></p>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
